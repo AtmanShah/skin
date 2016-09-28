@@ -15,9 +15,6 @@ if ( class_exists( 'Kirki' ) ) {
     * Add a Customizer Panel and Sections
     */
     function skin_demo_panels_sections( $wp_customize ) {
-    // Removing some default sections
-        // Removing Static Front Page from Customizer
-        $wp_customize->remove_section('static_front_page');
 
     // Adding sections in theme customizer for Skin theme
         // Header Style.
@@ -87,14 +84,7 @@ if ( class_exists( 'Kirki' ) ) {
         // 1. Site Identity
         
         // 1.1 Logo Uploader Field
-        $fields[] = array(
-            'settings' => 'header_logo',
-            'label'    => __( 'Add a image for Header Logo, demo uses 193px*61px', 'skin' ),
-            'section'  => 'title_tagline',
-            'type'     => 'image',
-            'priority' => 1,
-            'default'  => '',
-        );
+          // Logo area is added through WP's default logo uploader
         // 1.2, 1.3 and 1.4 settings are added by default by WordPress
 
         // 2. Header
@@ -125,7 +115,7 @@ if ( class_exists( 'Kirki' ) ) {
             'label'       => __( 'Featured Area On-Off', 'skin' ),
             'description' => __( 'To turn on-off featured area site wide.', 'skin' ),
             'section'     => 'featured_style',
-            'default'     => '1', 
+            'default'     => '0', 
         ); 
 
         // 3.2 Featured Area Category Selector
@@ -210,7 +200,7 @@ if ( class_exists( 'Kirki' ) ) {
             'type'        => 'text',
             'settings'    => 'footer_copyright',
             'label'       => __( 'Copyright text', 'skin' ),
-            'default'     => __( 'Copyright - Your Website Name', 'skin' ),
+            'default'     => '',
             'section'     => 'footer_style',
             'priority'    => 12,    
             'transport'   => 'postMessage',
@@ -350,7 +340,7 @@ if ( class_exists( 'Kirki' ) ) {
             'settings'    => 'skin_twitter_on_off',
             'label'       => __( 'Twitter ON/OFF', 'skin' ),
             'section'     => 'skin_social_icons',
-            'default'     => '1',
+            'default'     => '0',
             'priority'    => 1,
             'choices'     => array(
                 'on'  => __( 'On', 'skin' ),
@@ -373,7 +363,7 @@ if ( class_exists( 'Kirki' ) ) {
             'settings'    => 'skin_facebook_on_off',
             'label'       => __( 'Facebook ON/OFF', 'skin' ),
             'section'     => 'skin_social_icons',
-            'default'     => '1',
+            'default'     => '0',
             'priority'    => 3,
             'choices'     => array(
                 'on'  => __( 'On', 'skin' ),
@@ -396,7 +386,7 @@ if ( class_exists( 'Kirki' ) ) {
             'settings'    => 'skin_instagram_on_off',
             'label'       => __( 'Instagram ON/OFF', 'skin' ),
             'section'     => 'skin_social_icons',
-            'default'     => '1',
+            'default'     => '0',
             'priority'    => 5,
             'choices'     => array(
                 'on'  => __( 'On', 'skin' ),
@@ -419,7 +409,7 @@ if ( class_exists( 'Kirki' ) ) {
             'settings'    => 'skin_youtube_on_off',
             'label'       => __( 'YouTube ON/OFF', 'skin' ),
             'section'     => 'skin_social_icons',
-            'default'     => '1',
+            'default'     => '0',
             'priority'    => 7,
             'choices'     => array(
                 'on'  => __( 'On', 'skin' ),

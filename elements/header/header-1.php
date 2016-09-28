@@ -3,21 +3,10 @@
         <div class="container">
             <div class="row"> 
 
-                <div class="col-md-4 logo">
-                    <?php if ( esc_attr( get_theme_mod( 'header_logo' ) ) ) : ?>
-                <a href="<?php echo  esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_mod( 'header_logo' ) ); ?>" alt="<?php bloginfo('name'); ?>" /></a>
-              <?php else : ?>
-                 <?php if(is_home()) { ?>
-                    <h1 class='site-title'>
-                      <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a>
-                    </h1>
-                    <p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
-                    <?php } else {?>
-                    <h2 class='site-title'>
-                      <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a>
-                    </h2>
-                    <p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
-              <?php } endif; ?>
+                <div class="col-md-4">
+                  <?php if ( function_exists( 'skin_logo_upload_area' ) ) {
+                    echo skin_logo_upload_area();
+                  }?>
                 </div>
 
                 <div class="col-md-8 search-area">

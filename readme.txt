@@ -42,19 +42,32 @@ Skin Theme bundles the following third-party resources:
 BootStrap, Copyright 2014 Alexander Farkas
 Licenses: MIT/GPL2
 Source: https://github.com/twbs/bootstrap
+License URL: https://github.com/twbs/bootstrap/blob/v4-dev/LICENSE
 
 Font Awesome Icons
 License: GNU GPL, Version 2 (or later)
 Source: http://fontawesome.io/
+License URL: http://fontawesome.io/license/
+
+Font License
+License: SIL OFL 1.1
+URL: http://scripts.sil.org/OFL
+
+FontAwesome Code License
+License: MIT License
+License URL: http://opensource.org/licenses/mit-license.html and http://fontawesome.io/license/
 
 Swiper slider
-License: Licensed v3.3.1
+License: MIT Licensed v3.3.1 
 Source: http://idangero.us/swiper/
+License URL: https://github.com/nolimits4web/Swiper/blob/master/LICENSE
 
 Demo Images used in Theme were used from Unsplash.com
 License: Creative Commons Zero
-Source: http://unsplash.com
+License URL: https://unsplash.com/license
+Source: https://creativecommons.org/publicdomain/zero/1.0/
+All photos published on Unsplash are licensed under Creative Commons Zero which means you can copy, modify, distribute and use the photos for free, including commercial purposes, without asking permission from or providing attribution to the photographer or Unsplash.
+
 
 
 == Notes ==
-

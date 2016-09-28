@@ -71,9 +71,13 @@
 /* Logo */
 .header_2 .top-header .logo{
     padding-left: 0px;
+    margin-left: -15px
 }
 .header_2 .top-header .logo img{
     height: 47px;
+}
+.header_2 .top-header .logo p {
+  display: none;
 }
 /* Main Menu */
 .header_2 .menu-wrapper {

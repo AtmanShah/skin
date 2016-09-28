@@ -12,20 +12,9 @@
                 </div>
 
                 <div class="col-md-7 col-sm-7 search-area">
-                    <div class="logo">
-                        <?php if ( esc_attr( get_theme_mod( 'header_logo' ) ) ) : ?>
-                    <a href="<?php echo  esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_mod( 'header_logo' ) ) ; ?>" alt="<?php bloginfo('name'); ?>" /></a>
-                  <?php else : ?>
-                     <?php if(is_home()) { ?>
-                        <h1 class='site-title'>
-                          <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a>
-                        </h1>
-                        <?php } else {?>
-                        <h2 class='site-title'>
-                          <a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a>
-                        </h2>
-                      <?php } endif; ?>
-                    </div>
+                  <?php if ( function_exists( 'skin_logo_upload_area' ) ) {
+                    echo skin_logo_upload_area();
+                  }?>
                     
                     <div class="header-search"> <?php get_search_form();?> </div>
                </div> <!--  .search-area-->

@@ -181,7 +181,12 @@ function skin_theme_setup() {
 	 * hard-coded <title> tag in the document head, and expect WordPress to
 	 * provide it for us.
 	 */
-	add_theme_support( 'title-tag' );
+		add_theme_support( 'title-tag' );
+	
+		// Add Logo Support For The Theme
+		add_theme_support( 'custom-logo', array(
+	   		'header-text' => array( 'site-title', 'site-description' ),
+		) );
 
     // Add support for Custom background
     add_theme_support( 'custom-background' ); 
@@ -314,7 +319,7 @@ add_filter('body_class', 'skin_add_layout_class');
 
 
 /*
- * Silk Custom BreadCrumb.
+ * Skin Custom BreadCrumb.
  * 
  * This theme also supports Yoast BreadCrumb. Once you activate Yoast BreadCrumb this breadcrumb will be deactivated automatically.
  * 
@@ -351,24 +356,24 @@ if ( ! function_exists( 'skin_breadcrumb' ) ) {
 				$html .= '<span class="item-cat">' . wp_kses( $parent, wp_kses_allowed_html( 'a' ) ) . '</span>';
 				$html .= $separator;
 			}
-			$html .= '<span class="item-current item-' . $post->ID . '"><span class="bread-current bread-' . $post->ID . '" title="' . get_the_title() . '">' . get_the_title() . '</span></span>';
+			$html .= '<span class="item-current item-' . $post->ID . '"><span class="bread-current bread-' . $post->ID . '" title="' . esc_attr( get_the_title() )  . '">' . esc_attr( get_the_title() )  . '</span></span>';
 		} elseif ( is_singular( 'page' ) ) {
 			if ( $post->post_parent ) {
 				$parents = get_post_ancestors( $post->ID );
 				$parents = array_reverse( $parents );
 				foreach ( $parents as $parent ) {
-					$html .= '<span class="item-parent item-parent-' . esc_attr( $parent ) . '"><a class="bread-parent bread-parent-' . esc_attr( $parent ) . '" href="' . esc_url( get_permalink( $parent ) ) . '" title="' . get_the_title( $parent ) . '">' . get_the_title( $parent ) . '</a></span>';
+					$html .= '<span class="item-parent item-parent-' . esc_attr( $parent ) . '"><a class="bread-parent bread-parent-' . esc_attr( $parent ) . '" href="' . esc_url( get_permalink( $parent ) ) . '" title="' . esc_attr( get_the_title( $parent ) ) . '">' . esc_attr( get_the_title( $parent ) ) . '</a></span>';
 					$html .= $separator;
 				}
 			}
-			$html .= '<span class="item-current item-' . $post->ID . '"><span title="' . get_the_title() . '"> ' . get_the_title() . '</span></span>';
+			$html .= '<span class="item-current item-' . $post->ID . '"><span title="' . esc_attr( get_the_title() ) . '"> ' . esc_attr( get_the_title() ) . '</span></span>';
 		} elseif ( is_singular( 'attachment' ) ) {
 			$parent_id        = $post->post_parent;
-			$parent_title     = get_the_title( $parent_id );
+			$parent_title     = esc_attr( get_the_title( $parent_id ) );
 			$parent_permalink = esc_url( get_permalink( $parent_id ) );
 			$html .= '<span class="item-parent"><a class="bread-parent" href="' . esc_url( $parent_permalink ) . '" title="' . esc_attr( $parent_title ) . '">' . esc_attr( $parent_title ) . '</a></span>';
 			$html .= $separator;
-			$html .= '<span class="item-current item-' . $post->ID . '"><span title="' . get_the_title() . '"> ' . get_the_title() . '</span></span>';
+			$html .= '<span class="item-current item-' . $post->ID . '"><span title="' . esc_attr( get_the_title() ) . '"> ' . esc_attr( get_the_title() ) . '</span></span>';
 		} elseif ( is_singular() ) {
 			$post_type         = get_post_type();
 			$post_type_object  = get_post_type_object( $post_type );
@@ -403,7 +408,7 @@ if ( ! function_exists( 'skin_breadcrumb' ) ) {
 		} elseif ( is_404() ) {
 			$html .= '<span>' . __( 'Error 404', 'skin' ) . '</span>';
 		} elseif ( is_home() ) {
-			$html .= '<span>' . get_the_title( get_option( 'page_for_posts' ) ) . '</span>';
+			$html .= '<span>' . esc_attr( get_the_title( get_option( 'page_for_posts' ) ) ) . '</span>';
 		}
 		$html .= '</div>';
 		$html = apply_filters( 'skin_breadcrumbs_filter', $html );
@@ -613,19 +618,19 @@ if( ! function_exists( 'skin_social_icons' ) ){
         $icon_style = get_theme_mod('skin_icon_style','icon_type_round'); ?>
 	<div class="social-icons <?php echo esc_attr($icon_style); ?>">
 		<ul>
-			<?php if ( get_theme_mod( 'skin_twitter_on_off','1' ) == '1' ) { ?>
+			<?php if ( get_theme_mod( 'skin_twitter_on_off','0' ) == '1' ) { ?>
 			    <li><a href="<?php echo esc_url( get_theme_mod( 'skin_twitter_link','#' ) );?>"><i class="fa fa-twitter fa-2x"></i></a></li>
 			<?php } ?>
 
-			<?php if ( get_theme_mod( 'skin_facebook_on_off','1' ) == '1' ) { ?>
+			<?php if ( get_theme_mod( 'skin_facebook_on_off','0' ) == '1' ) { ?>
 			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_facebook_link','#' ) );?>"><i class="fa fa-facebook fa-2x"></i></a></li> 
 			<?php } ?>  
 			   
-			<?php if ( get_theme_mod( 'skin_instagram_on_off','1' ) == '1' ) { ?>  
+			<?php if ( get_theme_mod( 'skin_instagram_on_off','0' ) == '1' ) { ?>  
 			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_instagram_link','#' ) );?>"><i class="fa fa-instagram fa-2x"></i></a></li>
 			<?php } ?> 
 
-			<?php if ( get_theme_mod( 'skin_youtube_on_off','1' ) == '1' ) { ?>
+			<?php if ( get_theme_mod( 'skin_youtube_on_off','0' ) == '1' ) { ?>
 			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_youtube_link','#' ) );?>"><i class="fa fa-youtube-play fa-2x"></i></a></li>
 			<?php } ?> 
 			   
@@ -654,13 +659,44 @@ if( ! function_exists( 'skin_social_icons' ) ){
     <?php }
 }
 
-
-if ( ! function_exists('skin_custom_css_output')) {
+// Add Custom Style added throught Customizer in header with the use of wp_head.
+if ( ! function_exists('skin_custom_css_output') ) {
 	function skin_custom_css_output() { ?>
     <style>
-        <?php echo stripslashes( get_theme_mod( 'custom_css' ) ); ?>  
+        <?php echo wp_filter_nohtml_kses( get_theme_mod( 'custom_css' ) ); ?>  
     </style>  
 	<?php } 
 }
-
 add_action('wp_head','skin_custom_css_output');
+
+
+// Using get_the_excerpt to add the custom sized excerpt content in Layout Type #1 & #3 
+if ( ! function_exists('skin_excerpt_length') ) {
+	function skin_excerpt_length( $limit ) {
+		return wp_trim_words( get_the_excerpt(), $limit, ' ' );
+	}
+}
+
+
+// Logo Area
+if ( ! function_exists('skin_logo_upload_area') ) {
+	function skin_logo_upload_area() { ?>
+			<div class="logo">
+				<?php
+					if ( has_custom_logo() ) {
+							the_custom_logo();
+					} else {
+						if(is_home()) { ?>
+							<h1 class='site-title'>
+									<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a>
+							</h1>
+							<p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
+					<?php } else { ?>
+						<h2 class='site-title'>
+						<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a></h2>
+						<p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
+					<?php } 
+				} ?>
+			</div>
+	<?php }
+}

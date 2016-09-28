@@ -76,6 +76,9 @@
 .header_3 .top-header .logo img{
     height: 42px;
 }
+.header_3 .top-header .logo p {
+  display: none;
+}
 /* Main Menu */
 .header_3 .menu-wrapper {
     background: #2185c5;

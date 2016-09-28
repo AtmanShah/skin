@@ -6,7 +6,7 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                 <?php $cat_name = get_theme_mod('skin_featured_categories'); ?>
-                <?php query_posts('category_name='. $cat_name .'&posts_per_page=3&ignore_sticky_posts=1'); ?>
+                <?php get_posts('category_name='. $cat_name .'&posts_per_page=3&ignore_sticky_posts=1'); ?>
                 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
                     <div class="swiper-slide">
                     <div class="swiper_slide_image">
@@ -28,7 +28,7 @@
                     </div> <!-- .swiper-slide -->
 
                 <?php endwhile; endif; ?>
-                <?php wp_reset_query() ?>
+                <?php wp_reset_postdata() ?>
                 </div>
                 <div class="featured_label_arrows">
                 <!--Featured Label on Slider  -->
