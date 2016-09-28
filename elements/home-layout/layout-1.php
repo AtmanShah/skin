@@ -28,10 +28,10 @@
 
 
                 <div class="entry">
-                    <?php if ( has_post_thumbnail()){ 
-                        echo substr(strip_tags($post->post_content), 0, 150); 
-                    } else { 
-                        echo substr(strip_tags($post->post_content), 0, 350); 
+                    <?php if ( has_post_thumbnail()){
+                        echo skin_excerpt_length(30);
+                    } else {
+                        echo skin_excerpt_length(52); 
                     } ?>
                 </div>
 

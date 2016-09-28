@@ -314,7 +314,7 @@ add_filter('body_class', 'skin_add_layout_class');
 
 
 /*
- * Silk Custom BreadCrumb.
+ * Skin Custom BreadCrumb.
  * 
  * This theme also supports Yoast BreadCrumb. Once you activate Yoast BreadCrumb this breadcrumb will be deactivated automatically.
  * 
@@ -654,7 +654,7 @@ if( ! function_exists( 'skin_social_icons' ) ){
     <?php }
 }
 
-
+// Add Custom Style added throught Customizer in header with the use of wp_head.
 if ( ! function_exists('skin_custom_css_output')) {
 	function skin_custom_css_output() { ?>
     <style>
@@ -664,3 +664,9 @@ if ( ! function_exists('skin_custom_css_output')) {
 }
 
 add_action('wp_head','skin_custom_css_output');
+
+
+// Using get_the_excerpt to add the custom sized excerpt content in Layout Type #1 & #3 
+function skin_excerpt_length( $limit ) {
+	return wp_trim_words( get_the_excerpt(), $limit, ' ' );
+}

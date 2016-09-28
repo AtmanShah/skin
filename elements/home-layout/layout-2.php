@@ -29,7 +29,7 @@
                 </h2>
                 
                 <div class="entry">
-                <?php the_excerpt() ?>
+                    <?php the_excerpt() ?>
                 </div>
                 
                 <div class="postmetadata postmetadata_second">
