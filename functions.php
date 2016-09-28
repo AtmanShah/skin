@@ -660,41 +660,43 @@ if( ! function_exists( 'skin_social_icons' ) ){
 }
 
 // Add Custom Style added throught Customizer in header with the use of wp_head.
-if ( ! function_exists('skin_custom_css_output')) {
+if ( ! function_exists('skin_custom_css_output') ) {
 	function skin_custom_css_output() { ?>
     <style>
         <?php echo wp_filter_nohtml_kses( get_theme_mod( 'custom_css' ) ); ?>  
     </style>  
 	<?php } 
 }
-
 add_action('wp_head','skin_custom_css_output');
 
 
 // Using get_the_excerpt to add the custom sized excerpt content in Layout Type #1 & #3 
-function skin_excerpt_length( $limit ) {
-	return wp_trim_words( get_the_excerpt(), $limit, ' ' );
+if ( ! function_exists('skin_excerpt_length') ) {
+	function skin_excerpt_length( $limit ) {
+		return wp_trim_words( get_the_excerpt(), $limit, ' ' );
+	}
 }
 
 
 // Logo Area
-
-function skin_logo_upload_area() { ?>
-		<div class="logo">
-			<?php
-				if ( has_custom_logo() ) {
-						the_custom_logo();
-				} else {
-					if(is_home()) { ?>
-						<h1 class='site-title'>
-								<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a>
-						</h1>
+if ( ! function_exists('skin_logo_upload_area') ) {
+	function skin_logo_upload_area() { ?>
+			<div class="logo">
+				<?php
+					if ( has_custom_logo() ) {
+							the_custom_logo();
+					} else {
+						if(is_home()) { ?>
+							<h1 class='site-title'>
+									<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a>
+							</h1>
+							<p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
+					<?php } else { ?>
+						<h2 class='site-title'>
+						<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a></h2>
 						<p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
-				<?php } else { ?>
-					<h2 class='site-title'>
-					<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a></h2>
-					<p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
-				<?php } 
-			} ?>
-		</div>
-<?php }
+					<?php } 
+				} ?>
+			</div>
+	<?php }
+}

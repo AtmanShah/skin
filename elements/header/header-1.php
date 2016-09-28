@@ -4,7 +4,9 @@
             <div class="row"> 
 
                 <div class="col-md-4">
-                  <?php echo skin_logo_upload_area(); ?>
+                  <?php if ( function_exists( 'skin_logo_upload_area' ) ) {
+                    echo skin_logo_upload_area();
+                  }?>
                 </div>
 
                 <div class="col-md-8 search-area">

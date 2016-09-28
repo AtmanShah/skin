@@ -12,7 +12,9 @@
                 </div>
 
                 <div class="col-md-7 col-sm-7 search-area">
-                    <?php echo skin_logo_upload_area(); ?> 
+                  <?php if ( function_exists( 'skin_logo_upload_area' ) ) {
+                    echo skin_logo_upload_area();
+                  }?>
                     
                     <div class="header-search"> <?php get_search_form();?> </div>
                </div> <!--  .search-area-->
