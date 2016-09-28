@@ -658,7 +658,7 @@ if( ! function_exists( 'skin_social_icons' ) ){
 if ( ! function_exists('skin_custom_css_output')) {
 	function skin_custom_css_output() { ?>
     <style>
-        <?php echo stripslashes( get_theme_mod( 'custom_css' ) ); ?>  
+        <?php echo wp_filter_nohtml_kses( get_theme_mod( 'custom_css' ) ); ?>  
     </style>  
 	<?php } 
 }
