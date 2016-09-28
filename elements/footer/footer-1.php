@@ -39,7 +39,7 @@
         <div class="container">
             <div class="row">
             <div class="col-md-8 col-xs-8">
-                <p><?php echo esc_html( get_theme_mod( 'footer_copyright','Copyright &copy; - Your Website Name' ) ) ; ?> </p>
+                <p><?php echo esc_html( get_theme_mod( 'footer_copyright','' ) ) ; ?> </p>
             </div>
             <div class="col-md-4 col-xs-4 footer-credit">
                 <?php $skin_url = '//theskin.io'; ?>

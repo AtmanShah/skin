@@ -613,19 +613,19 @@ if( ! function_exists( 'skin_social_icons' ) ){
         $icon_style = get_theme_mod('skin_icon_style','icon_type_round'); ?>
 	<div class="social-icons <?php echo esc_attr($icon_style); ?>">
 		<ul>
-			<?php if ( get_theme_mod( 'skin_twitter_on_off','1' ) == '1' ) { ?>
+			<?php if ( get_theme_mod( 'skin_twitter_on_off','0' ) == '1' ) { ?>
 			    <li><a href="<?php echo esc_url( get_theme_mod( 'skin_twitter_link','#' ) );?>"><i class="fa fa-twitter fa-2x"></i></a></li>
 			<?php } ?>
 
-			<?php if ( get_theme_mod( 'skin_facebook_on_off','1' ) == '1' ) { ?>
+			<?php if ( get_theme_mod( 'skin_facebook_on_off','0' ) == '1' ) { ?>
 			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_facebook_link','#' ) );?>"><i class="fa fa-facebook fa-2x"></i></a></li> 
 			<?php } ?>  
 			   
-			<?php if ( get_theme_mod( 'skin_instagram_on_off','1' ) == '1' ) { ?>  
+			<?php if ( get_theme_mod( 'skin_instagram_on_off','0' ) == '1' ) { ?>  
 			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_instagram_link','#' ) );?>"><i class="fa fa-instagram fa-2x"></i></a></li>
 			<?php } ?> 
 
-			<?php if ( get_theme_mod( 'skin_youtube_on_off','1' ) == '1' ) { ?>
+			<?php if ( get_theme_mod( 'skin_youtube_on_off','0' ) == '1' ) { ?>
 			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_youtube_link','#' ) );?>"><i class="fa fa-youtube-play fa-2x"></i></a></li>
 			<?php } ?> 
 			   

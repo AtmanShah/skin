@@ -122,7 +122,7 @@ if ( class_exists( 'Kirki' ) ) {
             'label'       => __( 'Featured Area On-Off', 'skin' ),
             'description' => __( 'To turn on-off featured area site wide.', 'skin' ),
             'section'     => 'featured_style',
-            'default'     => '1', 
+            'default'     => '0', 
         ); 
 
         // 3.2 Featured Area Category Selector
@@ -207,7 +207,7 @@ if ( class_exists( 'Kirki' ) ) {
             'type'        => 'text',
             'settings'    => 'footer_copyright',
             'label'       => __( 'Copyright text', 'skin' ),
-            'default'     => __( 'Copyright - Your Website Name', 'skin' ),
+            'default'     => '',
             'section'     => 'footer_style',
             'priority'    => 12,    
             'transport'   => 'postMessage',
@@ -347,7 +347,7 @@ if ( class_exists( 'Kirki' ) ) {
             'settings'    => 'skin_twitter_on_off',
             'label'       => __( 'Twitter ON/OFF', 'skin' ),
             'section'     => 'skin_social_icons',
-            'default'     => '1',
+            'default'     => '0',
             'priority'    => 1,
             'choices'     => array(
                 'on'  => __( 'On', 'skin' ),
@@ -370,7 +370,7 @@ if ( class_exists( 'Kirki' ) ) {
             'settings'    => 'skin_facebook_on_off',
             'label'       => __( 'Facebook ON/OFF', 'skin' ),
             'section'     => 'skin_social_icons',
-            'default'     => '1',
+            'default'     => '0',
             'priority'    => 3,
             'choices'     => array(
                 'on'  => __( 'On', 'skin' ),
@@ -393,7 +393,7 @@ if ( class_exists( 'Kirki' ) ) {
             'settings'    => 'skin_instagram_on_off',
             'label'       => __( 'Instagram ON/OFF', 'skin' ),
             'section'     => 'skin_social_icons',
-            'default'     => '1',
+            'default'     => '0',
             'priority'    => 5,
             'choices'     => array(
                 'on'  => __( 'On', 'skin' ),
@@ -416,7 +416,7 @@ if ( class_exists( 'Kirki' ) ) {
             'settings'    => 'skin_youtube_on_off',
             'label'       => __( 'YouTube ON/OFF', 'skin' ),
             'section'     => 'skin_social_icons',
-            'default'     => '1',
+            'default'     => '0',
             'priority'    => 7,
             'choices'     => array(
                 'on'  => __( 'On', 'skin' ),
