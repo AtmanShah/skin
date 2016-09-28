@@ -20,12 +20,12 @@
                 <?php if ( has_post_thumbnail() ) { ?>
                 <div class="blog_post_img">
                      <a href="<?php the_permalink() ?>">
-                        <?php the_post_thumbnail('featured_one_thumb' ); ?>
+                        <?php the_post_thumbnail('skin_featured_one_thumb' ); ?>
                     </a>
                 </div>
                 <?php } else { } ?>
                 <h2>
-                    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"> <?php the_title(); ?></a>
+                    <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e('Permanent Link to','skin')?> <?php the_title_attribute(); ?>"> <?php the_title(); ?></a>
                 </h2>
                 
                 <div class="entry">

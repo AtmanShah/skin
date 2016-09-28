@@ -4,8 +4,8 @@
             <div class="row"> 
 
                 <div class="col-md-4 logo">
-                    <?php if ( get_theme_mod( 'header_logo' ) ) : ?>
-                <a href="<?php echo  esc_url( home_url( '/' ) ); ?>"><img src="<?php echo get_theme_mod( 'header_logo' ) ; ?>" alt="<?php bloginfo('name'); ?>" /></a>
+                    <?php if ( esc_attr( get_theme_mod( 'header_logo' ) ) ) : ?>
+                <a href="<?php echo  esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_theme_mod( 'header_logo' ) ); ?>" alt="<?php bloginfo('name'); ?>" /></a>
               <?php else : ?>
                  <?php if(is_home()) { ?>
                     <h1 class='site-title'>

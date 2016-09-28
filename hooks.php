@@ -20,35 +20,35 @@
 // get_theme_mod('featured_on_off','1');
 
 // For Adding Featured area in HomePage
-add_action('index_content_area_hook','featured_file_include_home', 40 );   
+add_action('skin_index_content_area_hook','skin_featured_file_include_home', 40 );   
 
-function featured_file_include_home() {
-      if (get_theme_mod('home_switch_new','1') == '1' ) { 
+function skin_featured_file_include_home() {
+      if ( esc_attr( get_theme_mod('home_switch_new','1') ) == '1' ) { 
           
-          if (get_theme_mod('featured_style_selector', 'skin_1') === 'skin_1') {  
+          if ( esc_attr( get_theme_mod('featured_style_selector', 'skin_1') ) === 'skin_1') {  
               get_template_part( 'elements/featured/featured', '1' ); 
           }
-          if (get_theme_mod('featured_style_selector', 'skin_1') === 'skin_2') {  
+          if ( esc_attr( get_theme_mod('featured_style_selector', 'skin_1') ) === 'skin_2') {  
               get_template_part( 'elements/featured/featured', '2' ); 
           }
-          if (get_theme_mod('featured_style_selector', 'skin_1') === 'skin_3') { 
+          if ( esc_attr( get_theme_mod('featured_style_selector', 'skin_1') ) === 'skin_3') { 
               get_template_part( 'elements/featured/featured', '3' ); 
           }   
     } 
 }
 
 // For Homepage, Archive page and others
-add_action('index_content_area_hook','template_file_include_home', 60 );   
+add_action('skin_index_content_area_hook','skin_template_file_include_home', 60 );   
 
-function template_file_include_home() {
+function skin_template_file_include_home() {
           
-    if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_1') {  
+    if ( esc_attr( get_theme_mod('post_area_style_selector', 'skin_1') ) === 'skin_1') {  
               get_template_part('elements/home-layout/layout','1');
           }
-    if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_2') {  
+    if ( esc_attr( get_theme_mod('post_area_style_selector', 'skin_1') ) === 'skin_2') {  
               get_template_part('elements/home-layout/layout','2');
           }
-    if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_3') { 
+    if ( esc_attr( get_theme_mod('post_area_style_selector', 'skin_1') ) === 'skin_3') { 
               get_template_part('elements/home-layout/layout','3');
           } 
     
@@ -56,32 +56,32 @@ function template_file_include_home() {
 
 
 // For Single/Post page.( for single.php )
-add_action('single_content_area_hook','template_file_include_single', 60 ); 
+add_action('skin_single_content_area_hook','skin_template_file_include_single', 60 ); 
 
-function template_file_include_single() {
+function skin_template_file_include_single() {
     get_template_part('elements/single-layout/layout','1');
 }
 
 
 // For Page Content.( for page.php )
-add_action('page_content_area_hook','template_file_include_page', 60 ); 
+add_action('skin_page_content_area_hook','skin_template_file_include_page', 60 ); 
 
-function template_file_include_page() {
+function skin_template_file_include_page() {
     get_template_part('elements/page','content');
 }
 
 
 // For Archive/Category page.( for archive.php )
-add_action('archive_content_area_hook','template_file_include_archive', 60 );
-function template_file_include_archive() { 
+add_action('skin_archive_content_area_hook','skin_template_file_include_archive', 60 );
+function skin_template_file_include_archive() { 
           
-    if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_1') {  
+    if ( esc_attr( get_theme_mod('post_area_style_selector', 'skin_1') ) === 'skin_1') {  
               get_template_part('elements/home-layout/layout','1');
           }
-    if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_2') {  
+    if ( esc_attr( get_theme_mod('post_area_style_selector', 'skin_1') ) === 'skin_2') {  
               get_template_part('elements/home-layout/layout','2');
           }
-    if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_3') { 
+    if ( esc_attr( get_theme_mod('post_area_style_selector', 'skin_1') ) === 'skin_3') { 
               get_template_part('elements/home-layout/layout','3');
           } 
     
@@ -93,16 +93,16 @@ function template_file_include_archive() {
 *
 * @since Skin 1.0
 */
-add_action('wp_footer','template_file_include_footer', 2 );
-function template_file_include_footer() {
+add_action('wp_footer','skin_template_file_include_footer', 2 );
+function skin_template_file_include_footer() {
               
-    if (get_theme_mod('footer_style_selector', 'skin_1') === 'skin_1') {  
+    if ( esc_attr( get_theme_mod('footer_style_selector', 'skin_1') ) === 'skin_1') {  
               get_template_part('elements/footer/footer','1');
           }
-    if (get_theme_mod('footer_style_selector', 'skin_1') === 'skin_2') {  
+    if ( esc_attr( get_theme_mod('footer_style_selector', 'skin_1') ) === 'skin_2') {  
               get_template_part('elements/footer/footer','2');
           }
-    if (get_theme_mod('footer_style_selector', 'skin_1') === 'skin_3') { 
+    if ( esc_attr( get_theme_mod('footer_style_selector', 'skin_1') ) === 'skin_3') { 
              get_template_part('elements/footer/footer','3');
           } 
 }

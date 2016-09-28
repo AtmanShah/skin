@@ -1,35 +1,11 @@
-<?php 
-/* Automatic Updates Integration - Do theme setup on the 'after_setup_theme' hook. */
-add_action( 'after_setup_theme', 'bowser_theme_setup' );
-
-/**
- * Theme setup function.
- * @since  0.1.0
- */
-function bowser_theme_setup(){
-
-	/* updater args */
-	$updater_args = array(
-		'repo_uri'    => 'http://magazine3.com/updates/',
-		'repo_slug'   => 'skin-theme',
-		'dashboard'   => false,
-		'username'    => false,
-	);
-
-	/* add support for updater */
-	add_theme_support( 'auto-hosted-theme-updater', $updater_args );
-}
- 
-/* Load Theme Updater */
-require_once( trailingslashit( get_template_directory() ) . 'inc/theme-updater.php' );
-new Bowser_Theme_Updater;
-
+<?php
 /**
  * Include the TGM_Plugin_Activation class.
  */
 require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 
-add_action( 'tgmpa_register', 'my_theme_register_required_plugins' );
+
+add_action( 'tgmpa_register', 'skin_register_required_plugins' );
 /**
  * Register the required plugins for this theme.
  *
@@ -44,7 +20,7 @@ add_action( 'tgmpa_register', 'my_theme_register_required_plugins' );
  * This function is hooked into tgmpa_init, which is fired within the
  * TGM_Plugin_Activation class constructor.
  */
-function my_theme_register_required_plugins() {
+function skin_register_required_plugins() {
 	/*
 	 * Array of plugin arrays. Required keys are name and slug.
 	 * If the source is NOT from the .org repo, then source is also required.
@@ -54,11 +30,11 @@ function my_theme_register_required_plugins() {
 		// This is an example of how to include a plugin from a GitHub repository in your theme.
 		// This presumes that the plugin code is based in the root of the GitHub repository
 		// and not in a subdirectory ('/src') of the repository.
-		array(
-			'name'      => 'Skin Toolkit',
-			'slug'      => 'skin-toolkit-plugin-master',
-			'source'    => 'https://github.com/TheSkin/skin-toolkit-plugin/archive/master.zip',
-		)
+	array(
+			'name'      => 'Kirki',
+			'slug'      => 'kirki',
+			'required'  => false,
+		),
 	);
 
 	/*
@@ -164,12 +140,15 @@ function my_theme_register_required_plugins() {
 	tgmpa( $plugins, $config );
 }
 
-// WooCommerce Support
-add_action( 'after_setup_theme', 'woocommerce_support' );
-function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
-} 
+//include_once dirname( __FILE__ ) . '/toolkit/skin_toolkit.php';
 
+// WooCommerce Support
+add_action( 'after_setup_theme', 'skin_woocommerce_support' );
+if ( ! function_exists( 'skin_woocommerce_support' ) ) {
+    function skin_woocommerce_support() {
+        add_theme_support( 'woocommerce' );
+    } 
+}
 /*
  *  
  * @since Skin 1.0
@@ -215,9 +194,9 @@ function skin_theme_setup() {
 	add_theme_support( 'post-thumbnails' );
     set_post_thumbnail_size( 1200, 0, true );
     // Image Sizes
-    add_image_size( 'featured_one_thumb', 733, 390, true );
-    add_image_size( 'content_one_thumb', 354, 200 , true );
-    add_image_size( 'related_thumb', 177, 130 , true );
+    add_image_size( 'skin_featured_one_thumb', 733, 390, true );
+    add_image_size( 'skin_content_one_thumb', 354, 200 , true );
+    add_image_size( 'skin_related_thumb', 177, 130 , true );
 
 	// This theme uses wp_nav_menu() in two locations.
 	register_nav_menus( array(
@@ -313,23 +292,25 @@ add_action( 'widgets_init', 'skin_theme_widgets_init' );
  * 
  * @since Skin 1.0
 */
-function add_layout_class( $classes ) {
+if ( ! function_exists( 'skin_add_layout_class' ) ) {
+    function skin_add_layout_class( $classes ) {
 
-if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_1') {
-	array_push( $classes, 'header-style-1' );
- }
-if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_2') {  
-	array_push( $classes, 'header-style-2' );
+    if ( esc_attr( get_theme_mod('header_style_selector', 'skin_1') ) === 'skin_1') {
+        array_push( $classes, 'header-style-1' );
+     }
+    if ( esc_attr( get_theme_mod('header_style_selector', 'skin_1') ) === 'skin_2') {  
+        array_push( $classes, 'header-style-2' );
+    }
+    if ( esc_attr( get_theme_mod('header_style_selector', 'skin_1') ) === 'skin_3') {  
+        array_push( $classes, 'header-style-3' );
+    }
+    if ( esc_attr( get_theme_mod('header_style_selector', 'skin_1') ) === 'skin_4') {  
+        array_push( $classes, 'header-style-4' ); 
+    }
+        return $classes;
+    }
 }
-if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_3') {  
-	array_push( $classes, 'header-style-3' );
-}
-if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_4') {  
-	array_push( $classes, 'header-style-4' ); 
-}
-    return $classes;
-}
-add_filter('body_class', 'add_layout_class');
+add_filter('body_class', 'skin_add_layout_class');
 
 
 /*
@@ -432,15 +413,15 @@ if ( ! function_exists( 'skin_breadcrumb' ) ) {
 
 
 /*
- * Silk Post Meta.
+ * Skin Post Meta.
  * 
- * silk_post_meta() function was created to add meta information at the end of single posts. You can edit the function using silk_post_meta() in Child theme.
+ * skin_post_meta() function was created to add meta information at the end of single posts. You can edit the function using skin_post_meta() in Child theme.
  * 
  * @since Skin 1.0
 */
 
-if (! function_exists('silk_post_meta') ) {
-    function silk_post_meta(){
+if (! function_exists('skin_post_meta') ) {
+    function skin_post_meta(){
         if(is_single() || is_page()) { ?>
             <div class="post-meta">
                 <?php _e('published on ','skin'); the_date();
@@ -463,11 +444,12 @@ edit_post_link( sprintf( __( 'Edit', 'skin' )), '<span class="edit-link">', '</s
  *
  * @since Skin 1.0
  */
-add_action('wp_footer','wpskin_backtotop');
-function wpskin_backtotop(){
-    echo '<a href="#" class="back-to-top"> '. __('top','skin') . ' </a>';
+add_action('wp_footer','skin_backtotop');
+if ( ! function_exists('skin_backtotop') ) {
+    function skin_backtotop(){
+        echo '<a href="#" class="back-to-top"> '. __('top','skin') . ' </a>';
+    }
 }
-
 
 /*
  * Adding Meta name="generator" in header through wp_head()
@@ -475,8 +457,8 @@ function wpskin_backtotop(){
  * @since Skin 1.0
  */
 
-add_action( 'wp_head', 'skin_generator' );
-function skin_generator() { 
+add_action( 'wp_head', 'skin_metaname_generator' );
+function skin_metaname_generator() { 
 	echo '<meta name="generator" content="Skin WP Theme" />';
 }
 
@@ -487,6 +469,7 @@ function skin_generator() {
  * @since Skin 1.0
 */ 
 require_once('inc/customizer.php');
+require_once('inc/skin-metabox.php');
 require_once('hooks.php');
 
 
@@ -498,7 +481,7 @@ require_once('hooks.php');
  * 
  * @since Skin 1.0
 */
-function get_all_categories_list() {
+function skin_get_all_categories_list() {
   $all_cats = get_categories();
   $results;
 
@@ -628,45 +611,56 @@ if ( ! function_exists('skin_mobile_menu')) {
 if( ! function_exists( 'skin_social_icons' ) ){
     function skin_social_icons() { 
         $icon_style = get_theme_mod('skin_icon_style','icon_type_round'); ?>
-	<div class="social-icons <?php echo $icon_style; ?>">
+	<div class="social-icons <?php echo esc_attr($icon_style); ?>">
 		<ul>
 			<?php if ( get_theme_mod( 'skin_twitter_on_off','1' ) == '1' ) { ?>
-			    <li><a href="<?php echo get_theme_mod( 'skin_twitter_link','#' )?>"><i class="fa fa-twitter fa-2x"></i></a></li>
+			    <li><a href="<?php echo esc_url( get_theme_mod( 'skin_twitter_link','#' ) );?>"><i class="fa fa-twitter fa-2x"></i></a></li>
 			<?php } ?>
 
 			<?php if ( get_theme_mod( 'skin_facebook_on_off','1' ) == '1' ) { ?>
-			    <li><a href="<?php echo get_theme_mod( 'skin_facebook_link','#' )?>"><i class="fa fa-facebook fa-2x"></i></a></li> 
+			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_facebook_link','#' ) );?>"><i class="fa fa-facebook fa-2x"></i></a></li> 
 			<?php } ?>  
 			   
 			<?php if ( get_theme_mod( 'skin_instagram_on_off','1' ) == '1' ) { ?>  
-			    <li><a href="<?php echo get_theme_mod( 'skin_instagram_link','#' )?>"><i class="fa fa-instagram fa-2x"></i></a></li>
+			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_instagram_link','#' ) );?>"><i class="fa fa-instagram fa-2x"></i></a></li>
 			<?php } ?> 
 
 			<?php if ( get_theme_mod( 'skin_youtube_on_off','1' ) == '1' ) { ?>
-			    <li><a href="<?php echo get_theme_mod( 'skin_youtube_link','#' )?>"><i class="fa fa-youtube-play fa-2x"></i></a></li>
+			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_youtube_link','#' ) );?>"><i class="fa fa-youtube-play fa-2x"></i></a></li>
 			<?php } ?> 
 			   
 			<?php if ( get_theme_mod( 'skin_linkedin_on_off','0' ) == '1' ) { ?>
-			    <li><a href="<?php echo get_theme_mod( 'skin_linkedin_link','#' )?>"><i class="fa fa-linkedin fa-2x"></i></a></li>
+			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_linkedin_link','#' ) );?>"><i class="fa fa-linkedin fa-2x"></i></a></li>
 			<?php } ?> 
 
 			<?php if ( get_theme_mod( 'skin_pinterest_on_off','0' ) == '1' ) { ?>
-			    <li><a href="<?php echo get_theme_mod( 'skin_pinterest_link','#' )?>"><i class="fa fa-pinterest fa-2x"></i></a></li>
+			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_pinterest_link','#' ) );?>"><i class="fa fa-pinterest fa-2x"></i></a></li>
 			<?php } ?> 
 
 			<?php if ( get_theme_mod( 'skin_google_plus_on_off','0' ) == '1' ) { ?>  
-			    <li><a href="<?php echo get_theme_mod( 'skin_google_plus_link','#' )?>"><i class="fa fa-google-plus fa-2x"></i></a></li>
+			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_google_plus_link','#' ) );?>"><i class="fa fa-google-plus fa-2x"></i></a></li>
 			<?php } ?> 
 
 			<?php if ( get_theme_mod( 'skin_tumblr_on_off','0' ) == '1' ) { ?>      
-			    <li><a href="<?php echo get_theme_mod( 'skin_tumblr_link','#' )?>"><i class="fa fa-tumblr fa-2x"></i></a></li> 
+			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_tumblr_link','#' ) );?>"><i class="fa fa-tumblr fa-2x"></i></a></li> 
 			<?php } ?> 
 
 			<?php if ( get_theme_mod( 'skin_reddit_on_off','0' ) == '1' ) { ?>    
-			    <li><a href="<?php echo get_theme_mod( 'skin_reddit_link','#' )?>"><i class="fa fa-reddit fa-2x"></i></a></li>  
+			    <li><a href="<?php echo  esc_url( get_theme_mod( 'skin_reddit_link','#' ) );?>"><i class="fa fa-reddit fa-2x"></i></a></li>  
 
 			<?php } ?>     
 		</ul>
 	</div>        
     <?php }
 }
+
+
+if ( ! function_exists('skin_custom_css_output')) {
+	function skin_custom_css_output() { ?>
+    <style>
+        <?php echo stripslashes( get_theme_mod( 'custom_css' ) ); ?>  
+    </style>  
+	<?php } 
+}
+
+add_action('wp_head','skin_custom_css_output');

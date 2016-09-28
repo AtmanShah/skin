@@ -60,16 +60,16 @@
 
 
 <?php 
-    if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_1') {  
+    if ( esc_attr( get_theme_mod('header_style_selector', 'skin_1') ) === 'skin_1') {  
     get_template_part( 'elements/header/header', '1' ); 
  }
-    if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_2') {  
+    if ( esc_attr( get_theme_mod('header_style_selector', 'skin_1') ) === 'skin_2') {  
     get_template_part( 'elements/header/header', '2' ); 
  }
-    if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_3') {  
+    if ( esc_attr( get_theme_mod('header_style_selector', 'skin_1') ) === 'skin_3') {  
     get_template_part( 'elements/header/header', '3' ); 
  }
-    if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_4') {  
+    if ( esc_attr( get_theme_mod('header_style_selector', 'skin_1') ) === 'skin_4') {  
     get_template_part( 'elements/header/header', '4' ); 
  }
 ?>

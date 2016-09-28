@@ -19,7 +19,7 @@ get_header(); ?>
                  * @since Skin 1.0
                  */
                 
-                do_action('index_content_area_hook'); 
+                do_action('skin_index_content_area_hook'); 
                 
                 ?>
 

@@ -23,7 +23,7 @@ get_header(); ?>
                  * @since Skin 1.0
                 */
                 
-                do_action('archive_content_area_hook'); ?>
+                do_action('skin_archive_content_area_hook'); ?>
 
             </div><!-- .content-wrapper -->
     

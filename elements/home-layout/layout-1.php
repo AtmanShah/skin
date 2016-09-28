@@ -14,11 +14,11 @@
                 <div class="blog_post_img">
                     <div class="blog_post_cat"><?php the_category('  ') ?></div>
                     <a href="<?php the_permalink() ?>">
-                        <?php the_post_thumbnail('content_one_thumb' ); ?>
+                        <?php the_post_thumbnail('skin_content_one_thumb' ); ?>
                     </a>
                 </div>
                 <h2>
-                    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"> <?php the_title(); ?></a>
+                    <a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e('Permanent Link to','skin')?> <?php the_title_attribute(); ?>"> <?php the_title(); ?></a>
                 </h2>
 
                 <div class="postmetadata">

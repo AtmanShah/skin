@@ -10,7 +10,7 @@
                             <div class="swiper-slide">
                             <div class="swiper_slide_image">
                                <a href="<?php the_permalink(); ?>">
-                                <?php the_post_thumbnail( 'featured_one_thumb' ); ?>
+                                <?php the_post_thumbnail( 'skin_featured_one_thumb' ); ?>
                                 </a>
                             </div>
 
@@ -18,7 +18,7 @@
                                                         <div class="swiper-pagination"></div>
 
                                 <div class="swiper_slide_title">
-                                    <a href="<?php the_permalink(); ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+                                    <a href="<?php the_permalink(); ?>" rel="bookmark" title=" <?php _e('Permanent Link to','skin')?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
                                 </div><!-- .swiper_slide_title -->
                             </div>
 

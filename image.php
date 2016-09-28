@@ -13,8 +13,8 @@ get_header(); ?>
             <!-- BrearCrumbs-->
             <div class="col-md-12 breadcrumb">
                 <?php if ( function_exists('yoast_breadcrumb') ) {
-                    $yoast_links_options = get_option( 'wpseo_internallinks' );
-                    $yoast_bc_enabled=$yoast_links_options['breadcrumbs-enable'];
+                    $yoast_links_options    =  get_option( 'wpseo_internallinks' );
+                    $yoast_bc_enabled       =  esc_attr( $yoast_links_options['breadcrumbs-enable'] );
                         if ($yoast_bc_enabled) { ?>
                             <span class="breadcrumb_heading"> <?php _e('you are here','skin'); ?></span>
                             <?php yoast_breadcrumb('<p id="breadcrumbs"> <i class="fa fa-home fa-2x"></i>','</p>');
@@ -31,12 +31,12 @@ get_header(); ?>
 <?php
     // Start the loop.
     while ( have_posts() ) : the_post(); ?>                
- <nav id="image-navigation" class="navigation image-navigation">
-						<div class="nav-links">
-							<div class="nav-previous"><?php previous_image_link( false, __( 'Previous Image', 'skin' ) ); ?></div>
-							<div class="nav-next"><?php next_image_link( false, __( 'Next Image', 'skin' ) ); ?></div>
-						</div><!-- .nav-links -->
-					</nav><!-- .image-navigation -->
+                    <nav id="image-navigation" class="navigation image-navigation">
+                        <div class="nav-links">
+                            <div class="nav-previous"><?php previous_image_link( false, __( 'Previous Image', 'skin' ) ); ?></div>
+                            <div class="nav-next"><?php next_image_link( false, __( 'Next Image', 'skin' ) ); ?></div>
+                        </div><!-- .nav-links -->
+                    </nav><!-- .image-navigation -->
 					
                     <header class="entry-header">
 						<h3><?php

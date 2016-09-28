@@ -39,10 +39,11 @@
         <div class="container">
             <div class="row">
             <div class="col-md-8 col-xs-8">
-                <p><?php echo get_theme_mod( 'footer_copyright','Copyright &copy; - Your Website Name' ) ; ?> </p>
+                <p><?php echo esc_html( get_theme_mod( 'footer_copyright','Copyright &copy; - Your Website Name' ) ) ; ?> </p>
             </div>
             <div class="col-md-4 col-xs-4 footer-credit">
-                <p>Powered by <a href="//theskin.io" title="Skin WordPress Theme" target="_blank"> Skin</a></p>
+                <?php $skin_url = '//theskin.io'; ?>
+                <p> <?php _e('Powered by','skin')?> <a href="<?php echo esc_url( $skin_url ) ?>" title="Skin WordPress Theme" target="_blank">  <?php _e('Skin','skin')?> </a></p>
             </div>
            </div>    
        </div>   

@@ -135,7 +135,7 @@ if ( class_exists( 'Kirki' ) ) {
           'label'    => __( 'Home Top Category', 'skin' ),
           'section'  => 'featured_style',
           'type'     => 'select',
-          'choices'  => get_all_categories_list(),
+          'choices'  => skin_get_all_categories_list(),
         );
 
         // 3.3 Change Text written to top of Featured Area.

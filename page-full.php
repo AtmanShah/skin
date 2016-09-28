@@ -20,7 +20,7 @@ get_header(); ?>
                  * This action hook will get the layout file selected from the theme customizer.
                 */
                 
-                do_action('page_content_area_hook'); ?>
+                do_action('skin_page_content_area_hook'); ?>
                 
             </div><!-- .content-wrapper -->
                 

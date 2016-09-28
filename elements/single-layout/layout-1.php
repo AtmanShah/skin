@@ -1,21 +1,29 @@
+<?php
+    $image_position =   get_post_meta($post->ID, 'image-position', true);
+    $title_position =   get_post_meta($post->ID, 'title-position', true);
+?>
+
 <div class="single-content-holder">
     <?php
         while ( have_posts() ) : the_post();
-    if ( has_post_thumbnail() && get_theme_mod( 'skin_single_featured','1' ) == '1' ){ ?>
-        <div class="big-featured-image">
-            <?php the_post_thumbnail(); ?>
-            <div class="cat-wrapper"> <?php the_category(''); ?> </div>
-            <div class="clear-both"></div>
-        </div>
+    if ( has_post_thumbnail() && get_theme_mod( 'skin_single_featured','1' ) == '1' ){ 
+        if ( $image_position == 'default' ) { ?>
+            <div class="big-featured-image">
+                <?php the_post_thumbnail(); ?>
+                <div class="cat-wrapper"> <?php the_category(''); ?> </div>
+                <div class="clear-both"></div>
+            </div>
+        <?php } ?>
     <?php } else { ?>
         <div class="cat-wrapper cat-no-featured"> <?php the_category(''); ?> </div>
     <?php } ?>
-    
-    <div class="title-holder">
-        <h1><?php the_title();?> </h1>
-        
-        <?php silk_post_meta(); ?>
-    </div>
+    <?php if ( $title_position == 'default' ){?>
+        <div class="title-holder">
+            <h1><?php the_title();?> </h1>
+            
+            <?php skin_post_meta(); ?>
+        </div>
+    <?php }?>
     
     <div class="post-content">
         <?php the_content();
@@ -33,7 +41,7 @@
     <?php endwhile ?>
 </div> <!--.single-content-holder-->
 
-<?php if ( get_theme_mod('skin_single_social','1') == '1' ) { ?> 
+<?php if ( esc_attr( get_theme_mod('skin_single_social','1') ) == '1' ) { ?> 
     <div class="share-block">
         <span class="share-this-text">
             <span> <?php _e('share ','skin'); ?> </span>
@@ -57,7 +65,7 @@
      </div>   <!--   .share-block-->
 <?php } ?>
 
-<?php if ( get_theme_mod('skin_single_author','1') == '1' ) { ?>
+<?php if ( esc_attr( get_theme_mod('skin_single_author','1') ) == '1' ) { ?>
      <div class="author-area">
          <?php 
              $author_avatar_size = apply_filters( 'skin_author_avatar_size', 100 );
@@ -73,7 +81,7 @@
     </div>
 <?php } ?>
      
-    <?php if ( '1' === get_theme_mod( 'tag_on_off', '1' )) { 
+    <?php if ( '1' === esc_attr( get_theme_mod( 'tag_on_off', '1' ) ) ) { 
           $tag = get_the_tags(); 
             if ($tag){ ?>
               <div class="single-tags">
@@ -95,7 +103,7 @@
     <div class="cb"></div>
     
 <?php 
-    if ( get_theme_mod('skin_single_related','1') == '1' ) {    
+    if ( esc_attr( get_theme_mod('skin_single_related','1') )== '1' ) {    
         get_template_part('elements/single-layout/related','posts'); 
     } 
 ?>
