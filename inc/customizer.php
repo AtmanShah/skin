@@ -15,9 +15,6 @@ if ( class_exists( 'Kirki' ) ) {
     * Add a Customizer Panel and Sections
     */
     function skin_demo_panels_sections( $wp_customize ) {
-    // Removing some default sections
-        // Removing Static Front Page from Customizer
-        $wp_customize->remove_section('static_front_page');
 
     // Adding sections in theme customizer for Skin theme
         // Header Style.
