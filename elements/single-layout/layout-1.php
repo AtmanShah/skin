@@ -17,10 +17,9 @@
     <?php } else { ?>
         <div class="cat-wrapper cat-no-featured"> <?php the_category(''); ?> </div>
     <?php } ?>
-    <?php if ( $title_position == 'default' ){?>
+    <?php if ( $title_position == 'default' || $title_position == '' ){?>
         <div class="title-holder">
             <h1><?php the_title();?> </h1>
-            
             <?php skin_post_meta(); ?>
         </div>
     <?php }?>
@@ -112,4 +111,3 @@
         if ( comments_open() || get_comments_number() ) {
             comments_template();
         } ?>
-

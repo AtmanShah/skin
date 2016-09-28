@@ -5,7 +5,7 @@
 function skin_title_custom_meta() {
     add_meta_box( 'skin_title_meta', __( 'Title Position', 'skin' ), 'skin_title_callback', 'post','side' );
 
-    add_meta_box( 'skin_featured_image_position', __( 'Featured Image Position', 'skin' ), 'skin_featured_image_callback', 'post','side' );
+    add_meta_box( 'skin_featured_image_position', __( 'Featured Image', 'skin' ), 'skin_featured_image_callback', 'post','side' );
 }
 add_action( 'add_meta_boxes', 'skin_title_custom_meta' );
 
