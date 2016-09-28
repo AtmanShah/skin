@@ -49,7 +49,7 @@ get_header(); ?>
                                   $metadata['height'],
                                   esc_url( get_permalink( $post->post_parent ) ),
                                   esc_attr( strip_tags( get_the_title( $post->post_parent ) ) ),
-                                  get_the_title( $post->post_parent ) );
+                                  esc_attr( get_the_title( $post->post_parent ) ) );
                               ?> </h3>   
 					</header><!-- .entry-header -->
                <div class="attachment-container">
