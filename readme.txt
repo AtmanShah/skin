@@ -47,13 +47,23 @@ Font Awesome Icons
 License: GNU GPL, Version 2 (or later)
 Source: http://fontawesome.io/
 
+Font License
+License: SIL OFL 1.1
+URL: http://scripts.sil.org/OFL
+
+FontAwesome Code License
+License: MIT License
+URL: http://opensource.org/licenses/mit-license.html
+
 Swiper slider
-License: Licensed v3.3.1
+License: MIT Licensed v3.3.1 
 Source: http://idangero.us/swiper/
 
 Demo Images used in Theme were used from Unsplash.com
 License: Creative Commons Zero
-Source: http://unsplash.com
+Source: https://creativecommons.org/publicdomain/zero/1.0/
+All photos published on Unsplash are licensed under Creative Commons Zero which means you can copy, modify, distribute and use the photos for free, including commercial purposes, without asking permission from or providing attribution to the photographer or Unsplash.
+
 
 
 == Notes ==
