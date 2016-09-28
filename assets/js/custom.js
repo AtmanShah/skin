@@ -14,8 +14,8 @@ jQuery(document).ready(function($) {
     
 
 	// Back to top 
-    var offset = 220;
-    var duration = 500;
+    var offset = 220,
+				duration = 500;
 
     $(window).scroll(function() {
         if ($(this).scrollTop() > offset) {
