@@ -81,6 +81,9 @@
     padding-left: 0px;
     float: left
 }
+.header_4 .top-header .logo p{
+  display: none;
+}
 
 /* Main Menu */
 .header_4 .menu-wrapper {

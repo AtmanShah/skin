@@ -181,7 +181,12 @@ function skin_theme_setup() {
 	 * hard-coded <title> tag in the document head, and expect WordPress to
 	 * provide it for us.
 	 */
-	add_theme_support( 'title-tag' );
+		add_theme_support( 'title-tag' );
+	
+		// Add Logo Support For The Theme
+		add_theme_support( 'custom-logo', array(
+	   		'header-text' => array( 'site-title', 'site-description' ),
+		) );
 
     // Add support for Custom background
     add_theme_support( 'custom-background' ); 
@@ -670,3 +675,26 @@ add_action('wp_head','skin_custom_css_output');
 function skin_excerpt_length( $limit ) {
 	return wp_trim_words( get_the_excerpt(), $limit, ' ' );
 }
+
+
+// Logo Area
+
+function skin_logo_upload_area() { ?>
+		<div class="logo">
+			<?php
+				if ( has_custom_logo() ) {
+						the_custom_logo();
+				} else {
+					if(is_home()) { ?>
+						<h1 class='site-title'>
+								<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a>
+						</h1>
+						<p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
+				<?php } else { ?>
+					<h2 class='site-title'>
+					<a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'name' ); ?></a></h2>
+					<p><a href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>' rel='home'> <?php bloginfo( 'description' ); ?></a></p>
+				<?php } 
+			} ?>
+		</div>
+<?php }

@@ -84,14 +84,7 @@ if ( class_exists( 'Kirki' ) ) {
         // 1. Site Identity
         
         // 1.1 Logo Uploader Field
-        $fields[] = array(
-            'settings' => 'header_logo',
-            'label'    => __( 'Add a image for Header Logo, demo uses 193px*61px', 'skin' ),
-            'section'  => 'title_tagline',
-            'type'     => 'image',
-            'priority' => 1,
-            'default'  => '',
-        );
+          // Logo area is added through WP's default logo uploader
         // 1.2, 1.3 and 1.4 settings are added by default by WordPress
 
         // 2. Header
