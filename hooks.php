@@ -63,11 +63,11 @@ function skin_template_file_include_single() {
 }
 
 
-// For Page Content.( for page.php )
+// For Page Content.( for page.php and template-full.php )
 add_action('skin_page_content_area_hook','skin_template_file_include_page', 60 ); 
 
 function skin_template_file_include_page() {
-    get_template_part('elements/page','content');
+    get_template_part('elements/template','page-content');
 }
 
 
