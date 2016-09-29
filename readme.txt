@@ -1,8 +1,8 @@
 === Skin ===
 Contributors: mohammed_kaludi, ahmedkaludi
 Requires at least: WordPress 4.4
-Tested up to: WordPress 4.5.2 
-Version: 0.3
+Tested up to: WordPress 4.6.1 
+Version: 0.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-menu, responsive-layout, full-width-template, rtl-language-support, sticky-post, theme-options, translation-ready
