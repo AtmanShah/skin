@@ -221,7 +221,7 @@ class Bowser_Theme_Updater{
 		$updater_data['uri'] = $theme_uri;
 
 		/* Domain */
-		$updater_data['domain'] = get_bloginfo('url');
+		$updater_data['domain'] =  esc_url( home_url() );
 
 		/* Updater class id and version */
 		$updater_data['autohosted'] = esc_attr( $config['autohosted'] );
@@ -302,7 +302,7 @@ class Bowser_Theme_Updater{
 				$theme_name = $upgrader->skin->theme_info->template;
 
 				/* add notification feedback text */
-				$upgrader->skin->feedback( __( 'Executing upgrader_source_selection filter function...', 'text-domain' ) );
+				$upgrader->skin->feedback( __( 'Executing upgrader_source_selection filter function...', 'skin' ) );
 
 				/* only if everything is set */
 				if( isset( $source, $remote_source, $theme_name ) ){
@@ -312,18 +312,18 @@ class Bowser_Theme_Updater{
 
 					/* rename the folder */
 					if(@rename( $source, $new_source ) ){
-						$upgrader->skin->feedback( __( 'Renamed theme folder successfully.', 'text-domain' ) );
+						$upgrader->skin->feedback( __( 'Renamed theme folder successfully.', 'skin' ) );
 						return $new_source;
 					}
 					/* unable to rename the folder to correct theme folder */
 					else{
-						$upgrader->skin->feedback( __( '**Unable to rename downloaded theme.', 'text-domain' ) );
+						$upgrader->skin->feedback( __( '**Unable to rename downloaded theme.', 'skin' ) );
 						return new WP_Error();
 					}
 				}
 				/* fallback */
 				else
-					$upgrader->skin->feedback( __( '**Source or Remote Source is unavailable.', 'text-domain' ) );
+					$upgrader->skin->feedback( __( '**Source or Remote Source is unavailable.', 'skin' ) );
 			}
 		}
 		return $source;
@@ -344,7 +344,7 @@ class Bowser_Theme_Updater{
 		$widget_id = 'aht_' . $updater_data['slug'] . '_activation_key';
 
 		/* Widget name */
-		$widget_name = $updater_data['name'] . __( ' Theme Updates', 'text-domain' );
+		$widget_name = $updater_data['name'] . __( ' Theme Updates', 'skin' );
 
 		/* role check, in default install only administrator have this cap */
 		if ( current_user_can( 'update_themes' ) ) {
@@ -382,37 +382,37 @@ class Bowser_Theme_Updater{
 
 				/* username */
 				$username = isset( $widget_option['username'] ) ? $widget_option['username'] : '';
-				echo '<p>'. __( 'Username: ', 'text-domain' ) . '<code>' . $username . '</code></p>';
+				echo '<p>'. __( 'Username: ', 'skin' ) . '<code>' . $username . '</code></p>';
 
 				/* activation key input */
 				$key = isset( $widget_option['key'] ) ? $widget_option['key'] : '' ;
-				echo '<p>'. __( 'Email: ', 'text-domain' ) . '<code>' . $key . '</code></p>';
+				echo '<p>'. __( 'Email: ', 'skin' ) . '<code>' . $key . '</code></p>';
 			}
 			else{
 
 				/* activation key input */
 				$key = isset( $widget_option['key'] ) ? $widget_option['key'] : '' ;
-				echo '<p>'. __( 'Key: ', 'text-domain' ) . '<code>' . $key . '</code></p>';
+				echo '<p>'. __( 'Key: ', 'skin' ) . '<code>' . $key . '</code></p>';
 			}
 
 			/* if key status is valid */
 			if ( $widget_option['status'] == 'valid' ){
-				_e( '<p>Your plugin update is <span style="color:green">active</span></p>', 'text-domain' );
+				_e( '<p>Your plugin update is <span style="color:green">active</span></p>', 'skin' );
 			}
 			/* if key is not valid */
 			elseif( $widget_option['status'] == 'invalid' ){
-				_e( '<p>Your input is <span style="color:red">not valid</span>, automatic updates is <span style="color:red">not active</span>.</p>', 'text-domain' );
-				echo '<p><a href="' . $edit_url . '" class="button-primary">' . __( 'Edit Key', 'text-domain' ) . '</a></p>';
+				_e( '<p>Your input is <span style="color:red">not valid</span>, automatic updates is <span style="color:red">not active</span>.</p>', 'skin' );
+				echo '<p><a href="' . $edit_url . '" class="button-primary">' . __( 'Edit Key', 'skin' ) . '</a></p>';
 			}
 			/* else */
 			else{
-				_e( '<p>Unable to validate update activation.</p>', 'auto-hosted' );
-				echo '<p><a href="' . $edit_url . '" class="button-primary">' . __( 'Try again', 'text-domain' ) . '</a></p>';
+				_e( '<p>Unable to validate update activation.</p>', 'skin' );
+				echo '<p><a href="' . $edit_url . '" class="button-primary">' . __( 'Try again', 'skin' ) . '</a></p>';
 			}
 		}
 		/* if activation key is not yet set/empty */
 		else{
-			echo '<p><a href="' . $edit_url . '" class="button-primary">' . __( 'Add Key', 'text-domain' ) . '</a></p>';
+			echo '<p><a href="' . $edit_url . '" class="button-primary">' . __( 'Add Key', 'skin' ) . '</a></p>';
 		}
 	}
 
@@ -498,13 +498,13 @@ class Bowser_Theme_Updater{
 		<?php if ( true === $updater_data['role'] ) { // members only update ?>
 
 		<p>
-			<label for="<?php echo $widget_id; ?>-username"><?php _e( 'User name', 'text-domain' ); ?></label>
+			<label for="<?php echo $widget_id; ?>-username"><?php _e( 'User name', 'skin' ); ?></label>
 		</p>
 		<p>
 			<input id="<?php echo $widget_id; ?>-username" name="<?php echo $widget_id; ?>[username]" type="text" value="<?php echo $username_option;?>"/>
 		</p>
 		<p>
-			<label for="<?php echo $widget_id; ?>-key"><?php _e( 'Email', 'text-domain' ); ?></label>
+			<label for="<?php echo $widget_id; ?>-key"><?php _e( 'Email', 'skin' ); ?></label>
 		</p>
 		<p>
 			<input id="<?php echo $widget_id; ?>-key" class="regular-text" name="<?php echo $widget_id; ?>[key]" type="text" value="<?php echo $key_option;?>"/>
@@ -513,7 +513,7 @@ class Bowser_Theme_Updater{
 		<?php } else { // activation keys ?>
 
 		<p>
-			<label for="<?php echo $widget_id; ?>-key"><?php _e( 'Activation Key', 'text-domain' ); ?></label>
+			<label for="<?php echo $widget_id; ?>-key"><?php _e( 'Activation Key', 'skin' ); ?></label>
 		</p>
 		<p>
 			<input id="<?php echo $widget_id; ?>-key" class="regular-text" name="<?php echo $widget_id; ?>[key]" type="text" value="<?php echo $key_option;?>"/>
