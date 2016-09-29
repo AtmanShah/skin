@@ -591,20 +591,20 @@ if ( class_exists( 'Kirki' ) ) {
         // 11. Extra Settings
         
         // 11.1 Google Analytics area.
-        $fields[] = array(
-            'type'        => 'code',
-            'settings'    => 'google_analytics',
-            'label'       => __( 'Enter the Google Analytics Code here.', 'skin' ),
-            'description' => __( 'Here you can enter the Google Analytics code that you get from the analytics website..', 'skin' ),
-            'section'     => 'skin_extra_settings',
-            'default'     => '',
-            'priority'    => 2,
-            'choices'     => array(
-                'language' => 'js',
-                'theme'    => 'monokai',
-                'height'   => 250,
-            ),
-        ); 
+        // $fields[] = array(
+        //     'type'        => 'code',
+        //     'settings'    => 'google_analytics',
+        //     'label'       => __( 'Enter the Google Analytics Code here.', 'skin' ),
+        //     'description' => __( 'Here you can enter the Google Analytics code that you get from the analytics website..', 'skin' ),
+        //     'section'     => 'skin_extra_settings',
+        //     'default'     => '',
+        //     'priority'    => 2,
+        //     'choices'     => array(
+        //         'language' => 'js',
+        //         'theme'    => 'monokai',
+        //         'height'   => 250,
+        //     ),
+        // ); 
         
         // 11.2 Setting to add Custom CSS. This CSS will be pasted in Footer.
         $fields[] = array(

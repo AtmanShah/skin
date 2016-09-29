@@ -12,6 +12,6 @@
 
 <?php wp_footer(); ?>
 
-<?php echo esc_attr(get_theme_mod('google_analytics')); ?>
+<?php // echo esc_attr(get_theme_mod('google_analytics')); ?>
 </body>
 </html>
