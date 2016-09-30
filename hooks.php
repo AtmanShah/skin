@@ -23,7 +23,7 @@
 add_action('skin_index_content_area_hook','skin_featured_file_include_home', 40 );   
 
 function skin_featured_file_include_home() {
-      if ( esc_attr( get_theme_mod('home_switch_new','1') ) == '1' ) { 
+      if ( esc_attr( get_theme_mod('home_switch_new','0') ) == '1' ) { 
           
           if ( esc_attr( get_theme_mod('featured_style_selector', 'skin_1') ) === 'skin_1') {  
               get_template_part( 'elements/featured/featured', '1' ); 

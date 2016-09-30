@@ -512,51 +512,51 @@ function skin_scripts() {
 
 	// Add FontAwesome, used in the main stylesheet.
     
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array() );
+	wp_enqueue_style( 'skin-font-awesome', get_template_directory_uri() . '/assets/css/font-awesome.min.css', array() );
 
 	// Add BootStrap
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array() );
+	wp_enqueue_style( 'skin-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array() );
     
 	// Add Swiper Slider Style
-	wp_enqueue_style( 'swiper-slider', get_template_directory_uri() . '/assets/css/swiper.min.css', array() );
+	wp_enqueue_style( 'skin-swiper-slider', get_template_directory_uri() . '/assets/css/swiper.min.css', array() );
     
     // Theme stylesheet.
 	wp_enqueue_style( 'skin-style', get_stylesheet_uri() );
     
     // Header style
     if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_1') {  
-	wp_enqueue_style( 'header_style_1', get_template_directory_uri() . '/elements/header/header-1.css', array() );
+	wp_enqueue_style( 'skin_header_style_1', get_template_directory_uri() . '/elements/header/header-1.css', array() );
  }
     if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_2') {  
-	wp_enqueue_style( 'header_style_2', get_template_directory_uri() . '/elements/header/header-2.css', array() );
+	wp_enqueue_style( 'skin_header_style_2', get_template_directory_uri() . '/elements/header/header-2.css', array() );
  }
     if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_3') {  
-	wp_enqueue_style( 'header_style_3', get_template_directory_uri() . '/elements/header/header-3.css', array() );
+	wp_enqueue_style( 'skin_header_style_3', get_template_directory_uri() . '/elements/header/header-3.css', array() );
 }
     if (get_theme_mod('header_style_selector', 'skin_1') === 'skin_4') {  
-	wp_enqueue_style( 'header_style_4', get_template_directory_uri() . '/elements/header/header-4.css', array() );
+	wp_enqueue_style( 'skin_header_style_4', get_template_directory_uri() . '/elements/header/header-4.css', array() );
 }
     
     // Featured style
 
     if (get_theme_mod('featured_style_selector', 'skin_1') === 'skin_1') {  
-	wp_enqueue_style( 'featured_style_1', get_template_directory_uri() . '/elements/featured/featured-1.css', array() );
+	wp_enqueue_style( 'skin_featured_style_1', get_template_directory_uri() . '/elements/featured/featured-1.css', array() );
  }
     if (get_theme_mod('featured_style_selector', 'skin_1') === 'skin_2') {  
-	wp_enqueue_style( 'featured_style_2', get_template_directory_uri() . '/elements/featured/featured-2.css', array() );
+	wp_enqueue_style( 'skin_featured_style_2', get_template_directory_uri() . '/elements/featured/featured-2.css', array() );
  }    
     
     
     
     // Post style
 if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_1') {  
-	wp_enqueue_style( 'home_layout_style_1', get_template_directory_uri() . '/elements/home-layout/layout-1.css', array() );
+	wp_enqueue_style( 'skin_home_layout_style_1', get_template_directory_uri() . '/elements/home-layout/layout-1.css', array() );
       }
 if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_2') {  
-	wp_enqueue_style( 'home_layout_style_2', get_template_directory_uri() . '/elements/home-layout/layout-2.css', array() );
+	wp_enqueue_style( 'skin_home_layout_style_2', get_template_directory_uri() . '/elements/home-layout/layout-2.css', array() );
       }
 if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_3') { 
-	wp_enqueue_style( 'home_layout_style_3', get_template_directory_uri() . '/elements/home-layout/layout-3.css', array() );
+	wp_enqueue_style( 'skin_home_layout_style_3', get_template_directory_uri() . '/elements/home-layout/layout-3.css', array() );
     }
 
    
@@ -567,13 +567,13 @@ if (get_theme_mod('post_area_style_selector', 'skin_1') === 'skin_3') {
 // Loading Scripts for the theme 
     
     // Loading BootStarp.min.js 
-    wp_enqueue_script( 'bootstrap-js', get_template_directory_uri() .'/assets/js/bootstrap.min.js', array('jquery'), 1.0, true);
+    wp_enqueue_script( 'skin-bootstrap-js', get_template_directory_uri() .'/assets/js/bootstrap.min.js', array('jquery'), 1.0, true);
     
     // Load Script for Swiper Slider
-    wp_enqueue_script( 'swiperslider', get_template_directory_uri() .'/assets/js/swiper.min.js', array('jquery'), 1.0, true);
+    wp_enqueue_script( 'skin-swiper-slider', get_template_directory_uri() .'/assets/js/swiper.min.js', array('jquery'), 1.0, true);
 
     // Load scripts.js to run custom functions
-    wp_enqueue_script( 'custom-js', get_template_directory_uri() .'/assets/js/custom.js', array('jquery'), 1.0, true);
+    wp_enqueue_script( 'skin-custom-js', get_template_directory_uri() .'/assets/js/custom.js', array('jquery'), 1.0, true);
     
      // Load Script only on Singular Pages where Comment Form is loaded.
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
